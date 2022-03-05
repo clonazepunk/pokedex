@@ -23,6 +23,31 @@ html {
   text-transform: capitalize;
 }
 
+.ls-none {
+  list-style: none;
+}
+
+.tac {
+  text-align: center;
+}
+
+.mp-0 {
+  margin: 0;
+  padding: 0;
+}
+
+.mb-1rem {
+  margin-bottom: 1rem;
+}
+
+.mt-1rem {
+  margin-top: 1rem;
+}
+
+.mt-2rem {
+  margin-top: 2rem;
+}
+
 .screen {
   display: flex;
   justify-content: center;
@@ -208,7 +233,7 @@ html {
   color: antiquewhite;
 }
 .screen .pokedex .right .right-mid .number-buttons {
-  width: 65%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;

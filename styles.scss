@@ -18,6 +18,25 @@ html {
 .tt-c{
     text-transform: capitalize;
 }
+.ls-none{
+  list-style: none;
+}
+.tac{
+  text-align: center;
+}
+.mp-0{
+  margin: 0;
+  padding: 0;
+}
+.mb-1rem{
+  margin-bottom: 1rem;
+}
+.mt-1rem{
+  margin-top: 1rem;
+}
+.mt-2rem{
+  margin-top: 2rem;
+}
 //FONTS
 @import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
 
@@ -216,7 +235,7 @@ html {
           }
         }
         .number-buttons {
-          width: 65%;
+          width: 100%;
           //   height: 35%;
           //   border: 1px solid black;
           display: flex;

@@ -85,6 +85,9 @@ function SearchClear() {
   while (document.querySelector("#page1").firstChild) {
     document.querySelector("#page1").firstChild.remove();
   }
+  while (document.querySelector("#page2").firstChild) {
+    document.querySelector("#page2").firstChild.remove();
+  }
 }
 
 function searchPkmn(id) {
@@ -95,6 +98,8 @@ function searchPkmn(id) {
       .then((data) => {
         createPkmn(data);
         // console.log(data);
+        // console.log(data.moves[3].move.name);
+
         // console.log(data.sprites.front_default);
       });
   }
@@ -109,10 +114,24 @@ function createPkmn(value) {
     <p> <      - ${value.id} -     > </p>
     `;
   page1.appendChild(p1);
+  const page2 = document.querySelector("#page2");
+  const p2 = document.createElement("div");
+  p2.innerHTML = `
+    <h3 class="mt-1rem">Attacks</h3>
+    <ul class="ls-none tac mp-0 tt-c mb-1rem mt-2rem">
+    <li class="mb-1rem">${value.moves[0].move.name}</li>
+    <li class="mb-1rem">${value.moves[1].move.name}</li>
+    <li class="mb-1rem">${value.moves[2].move.name}</li>
+    <li class="mb-1rem">${value.moves[3].move.name}</li>
+    </ul>
+    <p><                           ></p>
+    `;
+  page2.appendChild(p2);
 }
 // function screenErrorMessage() {
 //   blackScreen.textContent = "xD";
 // }
+
 //EVENTLISTENERS
 window.addEventListener("DOMContentLoaded", () => {
   disableButtons();
@@ -216,9 +235,13 @@ btnRight.addEventListener("click", () => {
   }
 });
 
-// btnUp.addEventListener('click', ()=>{
+btnUp.addEventListener('click', ()=>{
+page2.classList.add('d-none');
+page1.classList.remove('d-none');
 
-// });
-// btnDown.addEventListener('click', ()=>{
+});
+btnDown.addEventListener('click', ()=>{
+  page2.classList.remove('d-none');
+  page1.classList.add('d-none');
 
-// });
+});
