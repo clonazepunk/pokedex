@@ -13,6 +13,9 @@ const btn7 = document.querySelector("#btn7");
 const btn8 = document.querySelector("#btn8");
 const btn9 = document.querySelector("#btn9");
 const btn0 = document.querySelector("#btn0");
+
+//FALTA ARREGLAR BOTON SEARCH Y FLECHITAS DE LOS BOTONES
+
 //BUTTONS-ARROWS
 const btnUp = document.querySelector("#up");
 const btnDown = document.querySelector("#down");
@@ -32,9 +35,22 @@ const bright = document.querySelector(".bright-light");
 const red = document.querySelector(".red-light");
 const green = document.querySelector(".green-light");
 const yellow = document.querySelector(".yellow-light");
-
+//ARRAYS
 let on = false;
 let auxId;
+const numberButtons = [
+  btn1,
+  btn2,
+  btn3,
+  btn4,
+  btn5,
+  btn6,
+  btn7,
+  btn8,
+  btn9,
+  btn0,
+];
+
 const buttons = [
   btnUp,
   btnDown,
@@ -54,6 +70,7 @@ const buttons = [
   resetBtn,
 ];
 const lights = [orange, bright, red, green, yellow];
+
 //FUNCTIONS
 //HELPER FUNCTIONS
 function disableButtons() {
@@ -91,15 +108,20 @@ function SearchClear() {
 }
 
 function searchPkmn(id) {
-  if (id >= 1 && id <= 898) {
+ if (id > 898) {
+    screenErrorMessage("There are 898 pokemons to catch!");
+    disableButtons();
+    return;
+  } else {
     const url = `https://pokeapi.co/api/v2/pokemon/${id}/`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
         createPkmn(data);
+        page2.classList.add("d-none");
+        page1.classList.remove("d-none");
         // console.log(data);
         // console.log(data.moves[3].move.name);
-
         // console.log(data.sprites.front_default);
       });
   }
@@ -128,9 +150,16 @@ function createPkmn(value) {
     `;
   page2.appendChild(p2);
 }
-// function screenErrorMessage() {
-//   blackScreen.textContent = "xD";
-// }
+function screenErrorMessage(error) {
+  const page1 = document.querySelector("#page1");
+  page1.innerHTML = `
+    <p style="font-size: 2rem; text-align: center">${error}</p>
+  `;
+  setTimeout(() => {
+    SearchClear();
+    enableButtons();
+  }, 2000);
+}
 
 //EVENTLISTENERS
 window.addEventListener("DOMContentLoaded", () => {
@@ -138,56 +167,20 @@ window.addEventListener("DOMContentLoaded", () => {
   resetBlackScreen();
 });
 //EVENTLISTENERS FOR NUMBER BUTTONS
-btn1.addEventListener("click", (e) => {
-  if (blackScreen.textContent < 999) {
-    blackScreen.textContent += e.target.textContent;
-  }
-});
-btn2.addEventListener("click", (e) => {
-  if (blackScreen.textContent < 999) {
-    blackScreen.textContent += e.target.textContent;
-  }
-});
-btn3.addEventListener("click", (e) => {
-  if (blackScreen.textContent < 999) {
-    blackScreen.textContent += e.target.textContent;
-  }
-});
-btn4.addEventListener("click", (e) => {
-  if (blackScreen.textContent < 999) {
-    blackScreen.textContent += e.target.textContent;
-  }
-});
-btn5.addEventListener("click", (e) => {
-  if (blackScreen.textContent < 999) {
-    blackScreen.textContent += e.target.textContent;
-  }
-});
-btn6.addEventListener("click", (e) => {
-  if (blackScreen.textContent < 999) {
-    blackScreen.textContent += e.target.textContent;
-  }
-});
-btn7.addEventListener("click", (e) => {
-  if (blackScreen.textContent < 999) {
-    blackScreen.textContent += e.target.textContent;
-  }
-});
-btn8.addEventListener("click", (e) => {
-  if (blackScreen.textContent < 999) {
-    blackScreen.textContent += e.target.textContent;
-  }
-});
-btn9.addEventListener("click", (e) => {
-  if (blackScreen.textContent < 999) {
-    blackScreen.textContent += e.target.textContent;
-  }
-});
-
-btn0.addEventListener("click", (e) => {
-  if (!blackScreen.textContent == "" && blackScreen.textContent < 999) {
-    blackScreen.textContent += e.target.textContent;
-  }
+numberButtons.forEach((button) => {
+  button.addEventListener("click", (e) => {
+    if (e.target.textContent == 0) {
+      if (blackScreen.textContent == "") {
+        return;
+      } else if (blackScreen.textContent < 999) {
+        blackScreen.textContent += e.target.textContent;
+        return;
+      }
+    }
+    if (blackScreen.textContent < 999) {
+      blackScreen.textContent += e.target.textContent;
+    }
+  });
 });
 // EVENTLISTENERS FOR ON/OFF SEARCH & RESET
 onOff.addEventListener("click", () => {
@@ -208,11 +201,13 @@ resetBtn.addEventListener("click", () => {
   SearchClear();
 });
 searchBtn.addEventListener("click", () => {
-  SearchClear();
-  const id = blackScreen.textContent;
-  auxId = id;
-  searchPkmn(id);
-  resetBlackScreen();
+  if(!blackScreen.textContent == ''){
+    SearchClear();
+    const id = blackScreen.textContent;
+    auxId = id;
+    searchPkmn(id);
+    resetBlackScreen();
+  }
 });
 
 //EVENTLISTENERS-ARROWS
@@ -222,7 +217,8 @@ btnLeft.addEventListener("click", () => {
     const id = blackScreen.textContent;
     searchPkmn(auxId - 1);
     auxId--;
-    console.log(auxId > 1);
+    page2.classList.add("d-none");
+    page1.classList.remove("d-none");
   }
 });
 
@@ -232,16 +228,17 @@ btnRight.addEventListener("click", () => {
     const id = blackScreen.textContent;
     searchPkmn(Number(auxId) + 1);
     auxId++;
+    page2.classList.add("d-none");
+    page1.classList.remove("d-none");
   }
 });
 
-btnUp.addEventListener('click', ()=>{
-page2.classList.add('d-none');
-page1.classList.remove('d-none');
-
+btnUp.addEventListener("click", () => {
+  page2.classList.add("d-none");
+  page1.classList.remove("d-none");
 });
-btnDown.addEventListener('click', ()=>{
-  page2.classList.remove('d-none');
-  page1.classList.add('d-none');
-
+btnDown.addEventListener("click", () => {
+  page2.classList.remove("d-none");
+  page1.classList.add("d-none");
 });
+

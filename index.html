@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script src="https://kit.fontawesome.com/86a5d4ade1.js" crossorigin="anonymous"></script>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link rel="stylesheet" href="normalize.css">
         <link rel="stylesheet" href="styles.css">
         <title>Document</title>
@@ -26,7 +26,6 @@
                             <div class="screen-pokemon-container">
                                 <div id="page1" class="pokemon-container-page"></div>
                                 <div id="page2" class="pokemon-container-page  d-none"></div>
-
                             </div>
                         </div>
                         <div class="buttons">
@@ -43,12 +42,15 @@
                                     </div>
                                     <div class="arrow-buttons-mid">
                                         <button class="btn" id="left" disabled></button>
-                                        <button class="btn" disabled></button>
+                                        <button class="btn" disabled>
+                                            <i class="material-icons" style="font-size: 1.5rem; margin-left: -.10rem; margin-top: .20rem;">
+                                                location_searching
+                                            </i>
+                                        </button>
                                         <button class="btn" id="right" disabled></button>
-
                                     </div>
                                     <div class="arrow-buttons-bot">
-                                        <button class="btn"  id="down" disabled></button>
+                                        <button class="btn" id="down" disabled></button>
                                     </div>
                                 </div>
                             </div>
@@ -56,9 +58,7 @@
                     </div>
                 </div>
                 <div class="right">
-
                     <div class="top"></div>
-
                     <div class="right-mid">
                         <div class="black-screen">
                             <div class="search"></div>
@@ -80,7 +80,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="right-bottom">
                         <div class="right-bottom-left">
                             <button class="white-button white1" disabled></button>
@@ -98,6 +97,7 @@
                     </div>
                 </div>
             </div>
+            <p></p>
         </div>
         <script src="./script.js"></script>
     </body>

@@ -48,6 +48,11 @@ html {
   margin-top: 2rem;
 }
 
+body {
+  background-image: url(./poke-map.jpg);
+  background-size: cover;
+}
+
 .screen {
   display: flex;
   justify-content: center;
@@ -59,16 +64,17 @@ html {
   display: flex;
   width: 70rem;
   height: 50rem;
+  box-shadow: 19px 15px 18px #494949;
 }
 .screen .pokedex .left {
   width: 50%;
-  border: 1px solid black;
+  border-right: 2px solid black;
   display: flex;
   flex-direction: column;
+  box-shadow: 3px 0px 10px black;
 }
 .screen .pokedex .left .top {
   height: 15%;
-  border-bottom: 1px solid black;
   display: flex;
   justify-content: start;
   align-items: center;
@@ -116,7 +122,6 @@ html {
 .screen .pokedex .left .bottom .screen {
   width: 70%;
   height: 50%;
-  border: 1px solid black;
   border-radius: 1rem 1rem 1rem 5rem;
   background-color: antiquewhite;
   box-shadow: 1px 4px 5px black;
@@ -188,6 +193,9 @@ html {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  border: 2px solid black;
+  border-radius: 9rem;
+  background-color: #d54b4b;
 }
 .screen .pokedex .left .bottom .buttons .useful-buttons .arrow-buttons .btn {
   height: 2.5rem;
@@ -201,7 +209,6 @@ html {
 }
 .screen .pokedex .right {
   width: 50%;
-  border: 1px solid black;
 }
 .screen .pokedex .right .top {
   height: 15%;
@@ -217,6 +224,8 @@ html {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  border-bottom: 2px solid black;
+  box-shadow: 0px 5px 5px #050000;
 }
 .screen .pokedex .right .right-mid .black-screen {
   width: 65%;
