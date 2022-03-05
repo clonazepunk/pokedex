@@ -199,6 +199,8 @@ onOff.addEventListener("click", () => {
 resetBtn.addEventListener("click", () => {
   blackScreen.textContent = "";
   SearchClear();
+  auxId = 0;
+
 });
 searchBtn.addEventListener("click", () => {
   if(!blackScreen.textContent == ''){
@@ -212,7 +214,9 @@ searchBtn.addEventListener("click", () => {
 
 //EVENTLISTENERS-ARROWS
 btnLeft.addEventListener("click", () => {
-  if (auxId > 1) {
+  const page1 = document.querySelector("#page1");
+
+  if (auxId > 1 && page1.value != '') {
     SearchClear();
     const id = blackScreen.textContent;
     searchPkmn(auxId - 1);
@@ -221,9 +225,10 @@ btnLeft.addEventListener("click", () => {
     page1.classList.remove("d-none");
   }
 });
-
 btnRight.addEventListener("click", () => {
-  if (auxId < 898) {
+  const page1 = document.querySelector("#page1");
+
+  if (auxId < 898 && auxId > 0 &&page1.value != '') {
     SearchClear();
     const id = blackScreen.textContent;
     searchPkmn(Number(auxId) + 1);
@@ -232,7 +237,6 @@ btnRight.addEventListener("click", () => {
     page1.classList.remove("d-none");
   }
 });
-
 btnUp.addEventListener("click", () => {
   page2.classList.add("d-none");
   page1.classList.remove("d-none");
