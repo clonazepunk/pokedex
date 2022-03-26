@@ -108,8 +108,8 @@ function SearchClear() {
 }
 
 function searchPkmn(id) {
- if (id > 898) {
-    screenErrorMessage("There are 898 pokemons to catch!");
+ if (id > 250) {
+    screenErrorMessage("There are 250 pokemons to catch!");
     disableButtons();
     return;
   } else {
@@ -163,6 +163,7 @@ function screenErrorMessage(error) {
 
 //EVENTLISTENERS
 window.addEventListener("DOMContentLoaded", () => {
+  alert('INSTRUCTIONS: \nTurn your Pokedex on and use the right keyboard to search any pokemon you want. You can also use the left & right arrows to see next or previous pokemon, and up & down arrows to see their moves.\nNOT ADAPTED TO MOBILE SCREENS.');
   disableButtons();
   resetBlackScreen();
 });
@@ -228,7 +229,7 @@ btnLeft.addEventListener("click", () => {
 btnRight.addEventListener("click", () => {
   const page1 = document.querySelector("#page1");
 
-  if (auxId < 898 && auxId > 0 &&page1.value != '') {
+  if (auxId < 250 && auxId > 0 &&page1.value != '') {
     SearchClear();
     const id = blackScreen.textContent;
     searchPkmn(Number(auxId) + 1);

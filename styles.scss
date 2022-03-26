@@ -127,10 +127,12 @@ body {
             background-color: rgba(0, 0, 0, 0.541);
             display: flex;
             justify-content: center;
-            align-items: center;
+              overflow: hidden;
+              align-items: center;
             .pokemon-container-page {
               height: 100%;
               width: 90%;
+              overflow: hidden;
             }
           }
         }
