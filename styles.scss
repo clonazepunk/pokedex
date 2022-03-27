@@ -200,6 +200,13 @@ body {
                 background-color: black;
                 border-color: gray;
                 box-shadow: 1px 4px 5px rgba(0, 0, 0, 1);
+                color: rgb(80, 67, 67);
+              }
+              #up{
+                transform: rotate(90deg);
+              }
+              #down{
+                transform: rotate(270deg);
               }
               .arrow-buttons-top {
               }

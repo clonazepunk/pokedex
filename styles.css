@@ -205,6 +205,13 @@ body {
   background-color: black;
   border-color: gray;
   box-shadow: 1px 4px 5px black;
+  color: #504343;
+}
+.screen .pokedex .left .bottom .buttons .useful-buttons .arrow-buttons #up {
+  transform: rotate(90deg);
+}
+.screen .pokedex .left .bottom .buttons .useful-buttons .arrow-buttons #down {
+  transform: rotate(270deg);
 }
 .screen .pokedex .left .bottom .buttons .useful-buttons .arrow-buttons .arrow-buttons-mid {
   display: flex;

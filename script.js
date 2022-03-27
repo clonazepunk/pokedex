@@ -71,8 +71,20 @@ const buttons = [
 ];
 const lights = [orange, bright, red, green, yellow];
 
+//STARTS EXECUTION
+window.addEventListener("DOMContentLoaded", () => {
+  Swal.fire(
+    'INSTRUCTIONS',
+    'Turn your Pokedex on with the green button and use the right keyboard numbers & search button in order to get info of any pokemon you want. You can also use the left & right arrows to see next or previous pokemon, and up & down arrows to see their moves.\nNOT ADAPTED TO MOBILE SCREENS.',
+    'info'
+  )
+  disableButtons();//line 88
+  resetBlackScreen();// line 109
+});
+
 //FUNCTIONS
 //HELPER FUNCTIONS
+
 function disableButtons() {
   buttons.forEach((boton) => {
     boton.disabled = true;
@@ -107,12 +119,13 @@ function SearchClear() {
   }
 }
 
+//FETCH FUNCTION
 function searchPkmn(id) {
  if (id > 250) {
-    screenErrorMessage("There are 250 pokemons to catch!");
+    screenErrorMessage("There are 250 pokemons to catch!"); //LINE 168
     disableButtons();
     return;
-  } else {
+  } else{
     const url = `https://pokeapi.co/api/v2/pokemon/${id}/`;
     fetch(url)
       .then((res) => res.json())
@@ -127,6 +140,7 @@ function searchPkmn(id) {
   }
 }
 
+//Creates HTML with pokemon info
 function createPkmn(value) {
   const page1 = document.querySelector("#page1");
   const p1 = document.createElement("div");
@@ -150,6 +164,7 @@ function createPkmn(value) {
     `;
   page2.appendChild(p2);
 }
+
 function screenErrorMessage(error) {
   const page1 = document.querySelector("#page1");
   page1.innerHTML = `
@@ -162,11 +177,7 @@ function screenErrorMessage(error) {
 }
 
 //EVENTLISTENERS
-window.addEventListener("DOMContentLoaded", () => {
-  alert('INSTRUCTIONS: \nTurn your Pokedex on and use the right keyboard to search any pokemon you want. You can also use the left & right arrows to see next or previous pokemon, and up & down arrows to see their moves.\nNOT ADAPTED TO MOBILE SCREENS.');
-  disableButtons();
-  resetBlackScreen();
-});
+
 //EVENTLISTENERS FOR NUMBER BUTTONS
 numberButtons.forEach((button) => {
   button.addEventListener("click", (e) => {
@@ -197,12 +208,14 @@ onOff.addEventListener("click", () => {
     resetBlackScreen();
   }
 });
+
 resetBtn.addEventListener("click", () => {
   blackScreen.textContent = "";
   SearchClear();
   auxId = 0;
 
 });
+
 searchBtn.addEventListener("click", () => {
   if(!blackScreen.textContent == ''){
     SearchClear();
@@ -226,6 +239,7 @@ btnLeft.addEventListener("click", () => {
     page1.classList.remove("d-none");
   }
 });
+
 btnRight.addEventListener("click", () => {
   const page1 = document.querySelector("#page1");
 
@@ -238,10 +252,12 @@ btnRight.addEventListener("click", () => {
     page1.classList.remove("d-none");
   }
 });
+
 btnUp.addEventListener("click", () => {
   page2.classList.add("d-none");
   page1.classList.remove("d-none");
 });
+
 btnDown.addEventListener("click", () => {
   page2.classList.remove("d-none");
   page1.classList.add("d-none");

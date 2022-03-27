@@ -5,6 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/2ca277c051.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="normalize.css">
         <link rel="stylesheet" href="styles.css">
         <title>Document</title>
@@ -31,26 +32,26 @@
                         <div class="buttons">
                             <div class="decoration-buttons">
                                 <div class="circle-button decoration"></div>
-                                <button class="flatbutton flat1 "></button>
-                                <button class="flatbutton flat2 "></button>
+                                <button class="flatbutton flat1 " disabled></button>
+                                <button class="flatbutton flat2 " disabled></button>
                             </div>
                             <div class="useful-buttons">
                                 <button class="green-button ">On/Off</button>
                                 <div class="arrow-buttons">
                                     <div class="arrow-buttons-top">
-                                        <button class="btn" id="up" disabled></button>
+                                        <button class="btn" id="up" disabled><</button>
                                     </div>
                                     <div class="arrow-buttons-mid">
-                                        <button class="btn" id="left" disabled></button>
+                                        <button class="btn" id="left" disabled><</button>
                                         <button class="btn" disabled>
                                             <i class="material-icons" style="font-size: 1.5rem; margin-left: -.10rem; margin-top: .20rem;">
                                                 location_searching
                                             </i>
                                         </button>
-                                        <button class="btn" id="right" disabled></button>
+                                        <button class="btn" id="right" disabled>></button>
                                     </div>
                                     <div class="arrow-buttons-bot">
-                                        <button class="btn" id="down" disabled></button>
+                                        <button class="btn" id="down" disabled><</button>
                                     </div>
                                 </div>
                             </div>
@@ -98,7 +99,7 @@
                 </div>
             </div>
             <p></p>
-        </div>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="./script.js"></script>
     </body>
 </html>
